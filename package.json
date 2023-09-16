@@ -38,6 +38,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.4"
   },
   "bun-create": {
-    "postinstall": ["bun run applyLibName.js"]
+    "postinstall": ["bun run applyLibName.js", "rm -rf applyLibName.js"]
   }
 }
