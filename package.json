@@ -39,6 +39,10 @@
   },
   "bun-create": {
     "preinstall": "echo 'Installing react-library-template...'",
-    "postinstall": ["bun run applyLibName.js", "rm -rf applyLibName.js"]
-  }
+    "postinstall": [
+      "bun run applyLibConfig.js",
+      "rm -rf applyLibConfig.js"
+    ]
+  },
+  "author": "not-specified"
 }

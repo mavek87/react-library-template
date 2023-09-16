@@ -22,7 +22,7 @@ This is a template for building React libraries using Bun and Vite.
 - ```bun install```
 - add dependencies (for tests and other) 
 - some manual configurations on various files (package.json, vite.config.js, tsconfig.json, .gitignore, .env)
-- created a node script (applyLibName.js) which is automatically launched by Bun after you "clone" the template. It allows you to set the name of your library. 
+- created a node script (applyLibConfig.js) which is automatically launched by Bun after you "clone" the template. It allows you to set the name of your library. 
 
 ------------------------
 

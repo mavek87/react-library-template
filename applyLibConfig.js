@@ -1,4 +1,4 @@
-const fs = fs.require('node:fs');
+const fs = require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline');
 const rl = readline.createInterface({
@@ -49,7 +49,7 @@ const isFolderExcluded = (folderName) => {
 }
 
 const isFileExcluded = (fileName) => {
-    return fileName === "applyLibName.js" || fileName === "bun.lockb";
+    return fileName === ".gitignore" || fileName === "applyLibConfig.js" || fileName === "bun.lockb" || fileName === "README.md" || fileName === "LICENSE";
 }
 
 const edit = (filePath, libName) => {
@@ -59,17 +59,38 @@ const edit = (filePath, libName) => {
     fs.writeFileSync(filePath, newContent, {encoding: 'utf-8'});
 };
 
-const main = () => {
+const editPackageJson = (author) => {
+    const oldContent = fs.readFileSync("package.json", {encoding: 'utf8'});
+    const regex = /"author": "not-specified"/;
+    const newContent = oldContent.replace(regex, `"author": "${author}"`);
+    fs.writeFileSync("package.json", newContent, {encoding: 'utf-8'});
+};
+
+const main = async () => {
     const dir = __dirname;
     const filePaths = walk(dir);
     console.log(`included files: [${includedFiles}]`);
     console.log(`included folders: [${includedFolder}]`);
     console.log(`excluded files: [${excludedFiles}]`);
     console.log(`excluded folders: [${excludedFolder}]`);
-    rl.question('\ninsert the library name: ', (libName) => {
-        filePaths.forEach(filePath => edit(filePath, libName));
-        rl.close();
-    });
+
+    const libName = await new Promise(resolve => {
+        rl.question("\nLibrary name: ", resolve)
+    })
+    const author = await new Promise(resolve => {
+        rl.question("\nAuthor: ", resolve)
+    })
+    rl.close();
+
+    const config = {
+        libName,
+        author
+    }
+
+    filePaths.forEach(filePath => edit(filePath, config.libName));
+    editPackageJson(config.author);
+
+    console.log(`\nSuccessfully applied configs: ${JSON.stringify(config)}`);
 };
 
 main();
