@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+const fs = fs.require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline');
 const rl = readline.createInterface({
@@ -18,21 +18,23 @@ const walk = dir => {
         list.forEach(file => {
             file = path.join(dir, file);
             const stat = fs.statSync(file);
-            if (stat && stat.isDirectory()) {
+            if (stat.isDirectory()) {
+                // Is a dir
                 const fileName = path.basename(file);
-                if (isFolderExcluded(fileName)) {
+                if (!stat || isFolderExcluded(fileName)) {
                     excludedFolder.push(fileName);
                 } else {
                     includedFolder.push(fileName);
                     results = [...results, ...walk(file)]; // Recurse into subdir
                 }
             } else {
+                // Is a file
                 const fileName = path.basename(file);
                 if (!stat || isFileExcluded(fileName)) {
                     excludedFiles.push(fileName);
                 } else {
                     includedFiles.push(fileName);
-                    results.push(file); // Is a file
+                    results.push(file);
                 }
             }
         });
