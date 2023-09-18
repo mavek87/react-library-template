@@ -78,11 +78,12 @@ const main = async () => {
     console.log(`excluded files: [${excludedFiles}]`);
     console.log(`excluded folders: [${excludedFolder}]`);
 
+    console.log('\nInsert the library metadata:')
     const libName = await new Promise(resolve => {
-        rl.question("\nLibrary name: ", resolve)
+        rl.question("\nName: ", resolve)
     })
     const libDescription = await new Promise(resolve => {
-        rl.question("\nLibrary description: ", resolve)
+        rl.question("\nDescription: ", resolve)
     })
     const author = await new Promise(resolve => {
         rl.question("\nAuthor: ", resolve)
