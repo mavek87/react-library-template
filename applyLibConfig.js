@@ -59,13 +59,15 @@ const edit = (filePath, libName) => {
     fs.writeFileSync(filePath, newContent, {encoding: 'utf-8'});
 };
 
-const editPackageJson = (libName, author) => {
-    const originalContent = fs.readFileSync("package.json", {encoding: 'utf8'});
+const editPackageJson = (libName, libDescription, author) => {
+    let content = fs.readFileSync("package.json", {encoding: 'utf8'});
     const regexName = /"name": *".*"/;
-    let newContent = originalContent.replace(regexName, `"name": "${libName}"`);
-    const regexAuthor = /"author": *"not-specified"/;
-    newContent = newContent.replace(regexAuthor, `"author": "${author}"`);
-    fs.writeFileSync("package.json", newContent, {encoding: 'utf-8'});
+    content = content.replace(regexName, `"name": "${libName}"`);
+    const regexDescription = /"description": *".*"/;
+    content = content.replace(regexDescription, `"description": "${libDescription}"`);
+    const regexAuthor = /"author": *".*"/;
+    content = content.replace(regexAuthor, `"author": "${author}"`);
+    fs.writeFileSync("package.json", content, {encoding: 'utf-8'});
 };
 
 const main = async () => {
@@ -79,16 +81,20 @@ const main = async () => {
     const libName = await new Promise(resolve => {
         rl.question("\nLibrary name: ", resolve)
     })
+    const libDescription = await new Promise(resolve => {
+        rl.question("\nLibrary description: ", resolve)
+    })
     const author = await new Promise(resolve => {
         rl.question("\nAuthor: ", resolve)
     })
     rl.close();
 
     filePaths.forEach(filePath => edit(filePath, libName));
-    editPackageJson(libName, author);
+    editPackageJson(libName, libDescription, author);
 
     const config = {
         libName,
+        libDescription,
         author
     }
 

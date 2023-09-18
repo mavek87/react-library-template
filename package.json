@@ -1,7 +1,10 @@
 {
   "name": "react-library-template",
+  "description": "-",
   "private": false,
   "version": "0.0.0",
+  "main": "./dist/react-library-template.umd.cjs",
+  "module": "./dist/react-library-template.js",
   "type": "module",
   "scripts": {
     "clean": "rm -rf ./dist",
@@ -45,7 +48,10 @@
       "rm -rf LICENSE"
     ]
   },
-  "author": "not-specified",
+  "author": "-",
+  "keywords": [],
+  "license": "",
+  "bugs": "",
   "dependencies": {
     "force": ""
   }
