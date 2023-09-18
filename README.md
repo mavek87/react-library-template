@@ -5,6 +5,7 @@ This is a template for building React libraries using Bun and Vite.
 ### How to <u>use this template</u>:
 
 1) Install bun (https://bun.sh/): ```curl -fsSL https://bun.sh/install | bash```
+2) Install a recent version of nodejs (https://nodejs.org/it)
 2) ```bun create github.com/mavek87/react-library-template <name-of-react-library>```
 3) In the terminal insert the name of your react library
 
