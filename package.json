@@ -4,7 +4,9 @@
   "private": false,
   "version": "0.0.0",
   "author": "",
-  "files": ["./dist"],
+  "files": [
+    "./dist"
+  ],
   "main": "./dist/react-library-template.umd.cjs",
   "module": "./dist/react-library-template.js",
   "types": "./dist/react-library-template.d.ts",
@@ -26,10 +28,10 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
-    "@types/react": "^18.2.21",
+    "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.49.0",
     "eslint-plugin-react-hooks": "^4.6.0",
