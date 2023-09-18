@@ -59,10 +59,12 @@ const edit = (filePath, libName) => {
     fs.writeFileSync(filePath, newContent, {encoding: 'utf-8'});
 };
 
-const editPackageJson = (author) => {
-    const oldContent = fs.readFileSync("package.json", {encoding: 'utf8'});
-    const regex = /"author": "not-specified"/;
-    const newContent = oldContent.replace(regex, `"author": "${author}"`);
+const editPackageJson = (libName, author) => {
+    const originalContent = fs.readFileSync("package.json", {encoding: 'utf8'});
+    const regexName = /"name": *".*"/;
+    let newContent = originalContent.replace(regexName, `"name": "${libName}"`);
+    const regexAuthor = /"author": *"not-specified"/;
+    newContent = newContent.replace(regexAuthor, `"author": "${author}"`);
     fs.writeFileSync("package.json", newContent, {encoding: 'utf-8'});
 };
 
@@ -82,13 +84,13 @@ const main = async () => {
     })
     rl.close();
 
+    filePaths.forEach(filePath => edit(filePath, libName));
+    editPackageJson(libName, author);
+
     const config = {
         libName,
         author
     }
-
-    filePaths.forEach(filePath => edit(filePath, config.libName));
-    editPackageJson(config.author);
 
     console.log(`\nSuccessfully applied configs: ${JSON.stringify(config)}`);
 };
