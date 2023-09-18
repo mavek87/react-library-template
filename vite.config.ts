@@ -22,8 +22,8 @@ export default defineConfig(({ mode }) => {
       lib: {
         // Could also be a dictionary or array of multiple entry points
         entry: resolve(__dirname, 'src/index.ts'),
-        name: `${env.VITE_APP_NAME}`,
-        fileName: `${env.VITE_APP_FILE_NAME}`
+        name: `${env.VITE_LIB_NAME}`,
+        fileName: `${env.VITE_LIB_FILE_NAME}`
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'react/jsx-runtime', 'styled-components'],
