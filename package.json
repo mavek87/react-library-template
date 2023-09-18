@@ -1,6 +1,6 @@
 {
   "name": "react-library-template",
-  "description": "-",
+  "description": "",
   "private": false,
   "version": "0.0.0",
   "main": "./dist/react-library-template.umd.cjs",
@@ -48,7 +48,7 @@
       "rm -rf LICENSE"
     ]
   },
-  "author": "-",
+  "author": "",
   "keywords": [],
   "license": "",
   "bugs": "",
