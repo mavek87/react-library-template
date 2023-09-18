@@ -38,10 +38,11 @@
     "vitest": "^0.34.4"
   },
   "bun-create": {
-    "preinstall": "echo Installing react-library-template... && rm -rf LICENSE",
+    "preinstall": "echo Installing react-library-template...",
     "postinstall": [
       "bun run applyLibConfig.js",
-      "rm -rf applyLibConfig.js"
+      "rm -rf applyLibConfig.js",
+      "rm -rf LICENSE"
     ]
   },
   "author": "not-specified",
