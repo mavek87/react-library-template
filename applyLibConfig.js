@@ -55,14 +55,14 @@ const isFileExcluded = (fileName) => {
 const edit = (filePath, libName) => {
     const oldContent = fs.readFileSync(filePath, {encoding: 'utf8'});
     const regex = /react-library-template/;
-    const newContent = oldContent.replace(regex, libName);
+    const newContent = oldContent.replaceAll(regex, libName);
     fs.writeFileSync(filePath, newContent, {encoding: 'utf-8'});
 };
 
 const editPackageJson = (author) => {
     const oldContent = fs.readFileSync("package.json", {encoding: 'utf8'});
     const regex = /"author": "not-specified"/;
-    const newContent = oldContent.replace(regex, `"author": "${author}"`);
+    const newContent = oldContent.replaceAll(regex, `"author": "${author}"`);
     fs.writeFileSync("package.json", newContent, {encoding: 'utf-8'});
 };
 
