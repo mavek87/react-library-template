@@ -1,19 +1,13 @@
 {
-  "name": "@com.matteoveroni/react-library-template",
+  "name": "react-library-template",
   "description": "",
   "private": false,
   "version": "0.0.0",
   "author": "",
   "files": ["./dist"],
-  "keywords": [],
-  "license": "",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/"
-  },
-  "bugs": "",
   "main": "./dist/react-library-template.umd.cjs",
   "module": "./dist/react-library-template.js",
+  "types": "./dist/react-library-template.d.ts",
   "type": "module",
   "scripts": {
     "clean": "rm -rf ./dist",
@@ -57,7 +51,12 @@
       "rm -rf LICENSE"
     ]
   },
-  "dependencies": {
-    "force": ""
-  }
+  "license": "",
+  "keywords": [],
+  "homepage": "https://github.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/"
+  },
+  "bugs": "https://github.com"
 }
